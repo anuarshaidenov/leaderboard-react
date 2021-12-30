@@ -34,6 +34,16 @@ export class AddScore extends React.Component {
     this.setState({ score: Number(e.target.value) });
   };
 
+  sendPOSTRequest = (dataToSend) => {
+    return fetch(`${baseURL}${gameID}/scores/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(dataToSend),
+    });
+  };
+
   handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -42,13 +52,7 @@ export class AddScore extends React.Component {
       score: this.state.score,
     };
 
-    const response = await fetch(`${baseURL}${gameID}/scores/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(dataToSend),
-    });
+    const response = await this.sendPOSTRequest(dataToSend);
 
     if (!response.ok) {
       this.displayError();
