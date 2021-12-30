@@ -16,6 +16,16 @@ export class AddScore extends React.Component {
     };
   }
 
+  displayError = () => {
+    this.setState({ name: '', score: '', displayError: true });
+    setTimeout(() => this.setState({ displayError: false }), 3000);
+  };
+
+  displaySuccess = () => {
+    this.setState({ name: '', score: '', displaySuccess: true });
+    setTimeout(() => this.setState({ displaySuccess: false }), 3000);
+  };
+
   handleNameChange = (e) => {
     this.setState({ name: e.target.value });
   };
@@ -41,13 +51,11 @@ export class AddScore extends React.Component {
     });
 
     if (!response.ok) {
-      this.setState({ name: '', score: '', displayError: true });
-      setTimeout(() => this.setState({ displayError: false }), 3000);
+      this.displayError();
       return;
     }
 
-    this.setState({ name: '', score: 0, displaySuccess: true });
-    setTimeout(() => this.setState({ displaySuccess: false }), 3000);
+    this.displaySuccess();
   };
 
   render() {
