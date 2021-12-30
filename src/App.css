@@ -1,38 +1,116 @@
-.App {
-  text-align: center;
+:root {
+  --color-main-bg: #d9e3f7;
+  --color-secondary: #74a2ff;
+  --color-secondary-dark: #3563be;
+  --color-text: #190909;
+  --color-tertiary: #a3a6bb;
+  --color-white-transparent: rgba(255, 255, 255, 0.4);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-main-bg);
+  background-image: url(./images/bg.svg);
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+section {
+  width: 100%;
+}
+
+main {
+  margin-bottom: 2rem;
+}
+
+img {
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input {
+  font-family: inherit;
+}
+
+.hidden {
+  display: none;
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.container--flex {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: column-reverse;
+  gap: 2rem;
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
+@media (min-width: 768px) {
+  .container--flex {
+    flex-direction: row;
+  }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (min-width: 1000px) {
+  .container--flex {
+    gap: 8rem;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+.btn-main {
+  background-color: var(--color-secondary);
+  border: none;
+  border-radius: 10px;
+  padding: 0.8em 1.2em;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn-main:hover {
+  background-color: var(--color-secondary-dark);
+}
+
+.logo {
+  font-size: 3rem;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+@media (min-width: 768px) {
+  .logo {
+    margin-bottom: 6rem;
   }
+}
+
+.subtitle {
+  font-size: 2rem;
 }

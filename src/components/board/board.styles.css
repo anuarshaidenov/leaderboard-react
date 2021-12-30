@@ -1,0 +1,25 @@
+.board {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: min-content min-content;
+  grid-row-gap: 1rem;
+}
+
+.board__subtitle {
+  display: inline-block;
+}
+
+.board__scoreboard {
+  grid-column: span 2;
+}
+
+.board__btn {
+  align-self: center;
+  justify-self: end;
+}
+
+@media (min-width: 768px) {
+  .board__btn {
+    align-self: start;
+  }
+}
