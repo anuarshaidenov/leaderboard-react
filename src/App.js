@@ -14,6 +14,7 @@ class App extends React.Component {
 
     this.state = {
       scores: [],
+      loading: true,
     };
   }
 
@@ -29,6 +30,7 @@ class App extends React.Component {
           id: uuidv4(),
         }))
         .sort((score1, score2) => score2.score - score1.score),
+      loading: false,
     });
   }
 
@@ -38,7 +40,11 @@ class App extends React.Component {
         <Header title="Leaderboard" />
         <main>
           <div className="container container--flex">
-            <Board title="scores" scores={this.state.scores} />
+            <Board
+              title="scores"
+              scores={this.state.scores}
+              loading={this.state.loading}
+            />
             <AddScore />
           </div>
         </main>

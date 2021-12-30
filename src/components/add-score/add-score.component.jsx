@@ -51,14 +51,11 @@ export class AddScore extends React.Component {
       user: this.state.name,
       score: this.state.score,
     };
-
     const response = await this.sendPOSTRequest(dataToSend);
-
     if (!response.ok) {
       this.displayError();
       return;
     }
-
     this.displaySuccess();
   };
 
