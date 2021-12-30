@@ -8,7 +8,7 @@ export class AddScore extends React.Component {
 
     this.state = {
       name: '',
-      score: 0,
+      score: '',
       displaySuccess: false,
     };
   }
