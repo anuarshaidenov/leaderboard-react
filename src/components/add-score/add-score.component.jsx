@@ -86,6 +86,7 @@ export class AddScore extends React.Component {
             name="score"
             className="add-score__score"
             placeholder="Your Score"
+            autoComplete="off"
             min="0"
             max="100"
             required
