@@ -10,6 +10,7 @@ export class AddScore extends React.Component {
       name: '',
       score: '',
       displaySuccess: false,
+      displayError: false,
     };
   }
 
@@ -29,7 +30,7 @@ export class AddScore extends React.Component {
       score: this.state.score,
     };
 
-    await fetch(
+    const response = await fetch(
       'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/RaJjOkZyA3pKCnU9Cl9n/scores/',
       {
         method: 'POST',
@@ -40,8 +41,13 @@ export class AddScore extends React.Component {
       }
     );
 
-    this.setState({ name: '', score: 0, displaySuccess: true });
+    if (!response.ok) {
+      this.setState({ name: '', score: 0, displayError: true });
+      setTimeout(() => this.setState({ displayError: false }), 3000);
+      return;
+    }
 
+    this.setState({ name: '', score: 0, displaySuccess: true });
     setTimeout(() => this.setState({ displaySuccess: false }), 3000);
   };
 
@@ -89,8 +95,13 @@ export class AddScore extends React.Component {
         >
           New score has been added successfully!
         </p>
-        <p className="add-score__message--error opacity-0" id="error-message">
-          Failed to add❗️
+        <p
+          className={`add-score__message--error ${
+            !this.state.displayError ? 'opacity-0' : ''
+          } `}
+          id="error-message"
+        >
+          Score has to be above 0❗️
         </p>
       </section>
     );
