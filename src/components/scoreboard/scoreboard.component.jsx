@@ -3,10 +3,11 @@ import React from 'react';
 import './scoreboard.styles.css';
 
 export const Scoreboard = (props) => (
-  <ul class="scoreboard board__scoreboard" id="scores">
-    <li class="scoreboard__item">Name: 100</li>
-    <li class="scoreboard__item">Name: 100</li>
-    <li class="scoreboard__item">Name: 100</li>
-    <li class="scoreboard__item">Name: 100</li>
+  <ul className="scoreboard board__scoreboard">
+    {props.scores.map((score) => (
+      <li className="scoreboard__item">
+        {score.user}: {score.score}
+      </li>
+    ))}
   </ul>
 );
