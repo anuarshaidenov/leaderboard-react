@@ -2,6 +2,8 @@ import React from 'react';
 
 import './add-score.styles.css';
 
+import { baseURL, gameID } from '../../config';
+
 export class AddScore extends React.Component {
   constructor() {
     super();
@@ -30,19 +32,16 @@ export class AddScore extends React.Component {
       score: this.state.score,
     };
 
-    const response = await fetch(
-      'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/RaJjOkZyA3pKCnU9Cl9n/scores/',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(dataToSend),
-      }
-    );
+    const response = await fetch(`${baseURL}${gameID}/scores/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(dataToSend),
+    });
 
     if (!response.ok) {
-      this.setState({ name: '', score: 0, displayError: true });
+      this.setState({ name: '', score: '', displayError: true });
       setTimeout(() => this.setState({ displayError: false }), 3000);
       return;
     }

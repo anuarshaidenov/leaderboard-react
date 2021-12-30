@@ -4,6 +4,8 @@ import { Header } from './components/header/header.component';
 import { Board } from './components/board/board.component';
 import { AddScore } from './components/add-score/add-score.component';
 
+import { baseURL, gameID } from './config';
+
 import { v4 as uuidv4 } from 'uuid';
 
 class App extends React.Component {
@@ -16,9 +18,7 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
-    const response = await fetch(
-      'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/RaJjOkZyA3pKCnU9Cl9n/scores/'
-    );
+    const response = await fetch(`${baseURL}${gameID}/scores/`);
     const { result: scores } = await response.json();
 
     this.setState({
