@@ -57,6 +57,7 @@ export class AddScore extends React.Component {
       return;
     }
     this.displaySuccess();
+    this.props.loadLeaderboard();
   };
 
   render() {
